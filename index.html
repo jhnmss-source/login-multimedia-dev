@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username Password Input Validation</title>
+    <style>
+        /* CSS to match the large, clean layout in the screenshots */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 500px;
+            padding: 15px;
+            font-size: 2.5rem;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 532px; /* Matches input width + padding */
+            padding: 20px;
+            font-size: 3rem;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username">
+    </div>
+
+    <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+    </div>
+
+    <button onclick="validateLogin()">Submit</button>
+
+    <script>
+    /**
+     * DOCUMENTATION:
+     * 1. validateLogin: Retrieves input values and checks for complexity.
+     * 2. Security Note: console.log is used here for academic demonstration 
+     * as required by the activity screenshots.
+     */
+    function validateLogin() {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    // This "prefix" forces the console to show the literal text
+    console.log("DEBUG_USER:", user);
+    console.log("DEBUG_PASS:", pass);
+
+    const hasUpper = /[A-Z]/.test(pass);
+    const hasLower = /[a-z]/.test(pass);
+
+    if (pass.length > 8 && hasUpper && hasLower) {
+        alert("Welcome " + user);
+    } else {
+        alert("Password should be more than 8 characters and contain both uppercase and lowercase characters.");
+    }
+}
+</script>
+
+</body>
+</html>
